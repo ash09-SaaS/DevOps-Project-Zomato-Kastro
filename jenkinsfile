@@ -54,16 +54,6 @@ pipeline {
                 sh "docker build -t zomato ."
             }
         }
-        stage ("Tag & Push to DockerHub") {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'docker') {
-                        sh "docker tag zomato ashutoshshital/zomato:latest "
-                        sh "docker push ashutoshshital/zomato:latest "
-                    }
-                }
-            }
-        }
         
         stage ("Deploy to Container") {
             steps {
